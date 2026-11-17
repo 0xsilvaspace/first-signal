@@ -163,8 +163,9 @@ export default function Home() {
       return s.title.toLowerCase().includes(q) || s.project.toLowerCase().includes(q) || s.contractAddress.toLowerCase().includes(q);
     });
   }, [tab, query]);
-  const comingSoon = tab === "dex-pair";
+  const comingSoon = false;
   const showFourMemeNote = tab === "four-meme";
+  const showDexNote = tab === "dex-pair";
   return (
     <main className="mx-auto max-w-5xl px-4 py-8">
       <header>
@@ -206,6 +207,15 @@ export default function Home() {
         </div>
       )}
 
+      {showDexNote && (
+        <div className="mt-6 rounded-xl border border-stone-200 bg-white p-6">
+          <h2 className="text-lg font-bold">New pair gate</h2>
+          <p className="mt-2 text-sm text-stone-600">
+            A pair only lists here if it is under 24 hours old, with reserve over 10,000 USD, 24h volume over 5,000 USD, over 50 trades, and over 25 unique traders, verified on GeckoTerminal. That gate filters out the hundreds of new pools with almost no trading. It does not check for honeypots, locked liquidity, or a real team, so check the contract yourself before you send anything.
+          </p>
+        </div>
+      )}
+
       {comingSoon ? (
         <div className="mt-6 rounded-xl border border-stone-200 bg-white p-6">
           <h2 className="text-lg font-bold">New DEX Pairs: coming soon</h2>
@@ -226,7 +236,7 @@ export default function Home() {
 
       <footer className="mt-10 border-t border-stone-200 pt-4 text-xs text-stone-500">
         <p>First Signal lists early opportunities with verified information. It is not financial advice. Minting is often paid, prices are volatile, and a token can fall to zero. Check the contract address yourself before you send anything.</p>
-        <p className="mt-2">Track 1 live: Agent ID Mints. Track 2 live: Four.Meme Launches. Track 3 next: New DEX Pairs.</p>
+        <p className="mt-2">Track 1 live: Agent ID Mints. Track 2 live: Four.Meme Launches. Track 3 live: New DEX Pairs. All three tracks are live.</p>
       </footer>
     </main>
   );

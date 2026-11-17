@@ -13,9 +13,9 @@ Live site: https://first-signal-vercel.vercel.app
 
 ## Tracks, one after the other
 
-- Track 1, live first: Agent ID Mints on BSC. Seeded with JAGENT, verified 17 Nov 2026.
-- Track 2, next: Four.Meme Launches.
-- Track 3, next: New DEX Pairs.
+- Track 1, live: Agent ID Mints on BSC. Seeded with JAGENT, verified 17 Nov 2026.
+- Track 2, live: Four.Meme Launches. Seeded with WUKONG and GOSENT, verified 17 Nov 2026, with the graduation funnel shown.
+- Track 3, live: New DEX Pairs. Seeded with KuKu, GTA6, and TapeX, verified on GeckoTerminal 17 Nov 2026, with a gate of reserve over 10,000 USD, 24h volume over 5,000 USD, over 50 trades, and over 25 unique traders.
 
 A track is only marked live after it has been built and verified on the live site. No unverified listings are added.
 
