@@ -2,7 +2,7 @@
 
 Early crypto opportunities, checked on the official page and on chain first. Agent ID mints, Four.Meme launches, and new DEX pairs, with mint price, cost per token, liquidity, and risk shown clearly.
 
-Live site: to be added after the first Vercel deploy.
+Live site: https://first-signal-vercel.vercel.app
 
 ## What it does
 
