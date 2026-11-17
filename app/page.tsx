@@ -104,6 +104,18 @@ function SignalCard({ signal }: { signal: Signal }) {
         </div>
       )}
 
+      {signal.curveProgressPct !== null && (
+        <div className="mt-4">
+          <p className="text-xs text-stone-500">
+            Bonding curve: {signal.curveProgressPct} percent complete
+            {signal.raisedUsd !== null && signal.curveTargetUsd !== null ? `, ${signal.raisedUsd.toLocaleString("en-US")} USD raised of about ${signal.curveTargetUsd.toLocaleString("en-US")} USD` : ""}
+          </p>
+          <div className="mt-1 h-2 overflow-hidden rounded-full bg-stone-200">
+            <div className="h-full bg-green-800" style={{ width: `${Math.min(100, signal.curveProgressPct)}%` }} />
+          </div>
+        </div>
+      )}
+
       <div className="mt-4 space-y-2 text-sm">
         <p><span className="font-semibold">Liquidity: </span>{signal.liquidityLocked}</p>
         <p><span className="font-semibold">Hold rule: </span>{signal.holdRule}</p>
@@ -151,7 +163,8 @@ export default function Home() {
       return s.title.toLowerCase().includes(q) || s.project.toLowerCase().includes(q) || s.contractAddress.toLowerCase().includes(q);
     });
   }, [tab, query]);
-  const comingSoon = tab === "four-meme" || tab === "dex-pair";
+  const comingSoon = tab === "dex-pair";
+  const showFourMemeNote = tab === "four-meme";
   return (
     <main className="mx-auto max-w-5xl px-4 py-8">
       <header>
@@ -184,11 +197,20 @@ export default function Home() {
         />
       </div>
 
+      {showFourMemeNote && (
+        <div className="mt-6 rounded-xl border border-stone-200 bg-white p-6">
+          <h2 className="text-lg font-bold">How Four.Meme graduation works</h2>
+          <p className="mt-2 text-sm text-stone-600">
+            Four.Meme tokens trade on a bonding curve first. Supply is fixed at 1,000,000,000, 80 percent is sold on the curve, and when the curve fills, about 18 BNB or about 10,000 USDT raised, the rest moves to a PancakeSwap V2 pool and the LP tokens are burned. Most tokens never get there: 512 launches and 1 graduation in 24 hours on 17 Nov 2026, a 0.20 percent graduation rate, and 1,792 launches in a day with only 1 reaching PancakeSwap on 15 Nov 2026. A listing here is an early curve watch, not a proven opportunity, until it graduates with a real pool and volume.
+          </p>
+        </div>
+      )}
+
       {comingSoon ? (
         <div className="mt-6 rounded-xl border border-stone-200 bg-white p-6">
-          <h2 className="text-lg font-bold">{tab === "four-meme" ? "Four.Meme Launches: coming soon" : "New DEX Pairs: coming soon"}</h2>
+          <h2 className="text-lg font-bold">New DEX Pairs: coming soon</h2>
           <p className="mt-2 text-sm text-stone-600">
-            Track 1, Agent ID Mints, is live first. This track is next, one after the other, and it will only list items that have been verified on the official page and on chain. No unverified launches will be added here.
+            Track 1, Agent ID Mints, and Track 2, Four.Meme Launches, are live. This track is next, one after the other, and it will only list pairs that have been verified on DexScreener and on chain. No unverified pairs will be added here.
           </p>
         </div>
       ) : filtered.length === 0 ? (
@@ -204,7 +226,7 @@ export default function Home() {
 
       <footer className="mt-10 border-t border-stone-200 pt-4 text-xs text-stone-500">
         <p>First Signal lists early opportunities with verified information. It is not financial advice. Minting is often paid, prices are volatile, and a token can fall to zero. Check the contract address yourself before you send anything.</p>
-        <p className="mt-2">Track 1 live: Agent ID Mints. Track 2 next: Four.Meme Launches. Track 3 next: New DEX Pairs.</p>
+        <p className="mt-2">Track 1 live: Agent ID Mints. Track 2 live: Four.Meme Launches. Track 3 next: New DEX Pairs.</p>
       </footer>
     </main>
   );
